@@ -21,10 +21,10 @@
 	    // 获取本地应用资源版本号
 	    plus.runtime.getProperty(plus.runtime.appid,function(inf){
 	        wgtVer=inf.version;
-	        console.log("当前应用版本："+wgtVer);
+//	        alert("当前应用版本："+wgtVer);
 	    });
 	    // 检测更新
-		var checkUrl="http://www.lovewebgames.com/app/bigeatsmall/update/check.html";
+		var checkUrl="http://www.lovewebgames.com/app/bigeatsmall/update/check.html?d="+new Date();
 		function checkUpdate(){
 //		    plus.nativeUI.showWaiting("检测更新...");
 		    var xhr=new XMLHttpRequest();
@@ -35,6 +35,7 @@
 		            if(xhr.status==200){
 		                console.log("检测更新成功："+xhr.responseText);
 		                var newVer=xhr.responseText;
+//		                alert('远程版本：'+newVer)
 		                if(wgtVer&&newVer&&(wgtVer!=newVer)){
 		                    downWgt();  // 下载升级包
 		                }else{
